@@ -1,15 +1,17 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 const qs = require('qs');
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 4000;
 
-app.use(express.json());
-
 const TWITTER_CLIENT_ID = process.env.TWITTER_CLIENT_ID;
 const TWITTER_CLIENT_SECRET = process.env.TWITTER_CLIENT_SECRET;
+
+app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(express.json());
 
 // Step 1: Get OAuth2 Token
 const getOAuth2Token = async () => {

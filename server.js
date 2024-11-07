@@ -1,18 +1,20 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+require('dotenv').config();  
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 4000;
 
-// Use CORS to allow frontend access
+
+
 app.use(cors());
 
-// Define your Bearer token
+
 const BEARER_TOKEN = process.env.BEARER_TOKEN;
 
 app.get('/check-follow-status', async (req, res) => {
-  const { username } = req.query; // Get the username from the query parameter
+  const { username } = req.query; 
 
   try {
     // Get the user ID by username
@@ -24,7 +26,7 @@ app.get('/check-follow-status', async (req, res) => {
     );
     const userId = userResponse.data.data.id;
 
-    // Check if the user follows the target account (drpepeai)
+
     const followResponse = await axios.get(
       `https://api.twitter.com/2/users/${userId}/following`,
       {

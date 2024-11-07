@@ -12,6 +12,7 @@ app.use(cors());
 
 
 const BEARER_TOKEN = process.env.BEARER_TOKEN;
+console.log('BEARER_TOKEN:', BEARER_TOKEN);
 
 app.get('/check-follow-status', async (req, res) => {
   const { username } = req.query; 

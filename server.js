@@ -17,7 +17,7 @@ app.get('/check-follow-status', async (req, res) => {
   const { username } = req.query; 
 
   try {
-    // Get the user ID by username
+ 
     const userResponse = await axios.get(
       `https://api.twitter.com/2/users/by/username/${username}`,
       {

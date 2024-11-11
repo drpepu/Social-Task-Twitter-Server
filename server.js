@@ -14,7 +14,8 @@ app.get('/api/twitter-account', async (req, res) => {
     try {
         const response = await axios.get('https://api.twitter.com/2/users/by/username/drpepeai', {
             headers: {
-                Authorization: `Bearer AAAAAAAAAAAAAAAAAAAAAKF%2BwwEAAAAA%2FWcGPizOb553bRdSIFapTsShn0s%3D3rdIOwxIrqSvw1FGgnICnzEt69cOO7aDmB8Oh9DUTqd4HxXLgt`
+                Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`
+
             },
             params: {
                 'user.fields': 'created_at,description,location,profile_image_url,public_metrics,verified'
